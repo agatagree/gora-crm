@@ -1,0 +1,17 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "importOrder": [
+    "^react(.*)",
+    "^firebase(.*)",
+    "^api",
+    "^locales",
+    "^routes/",
+    "^components/",
+    "^utils",
+    "antd/(.*)",
+    "<THIRD_PARTY_MODULES>",
+    "@/(.*)",
+    "^./*.*.scss"
+  ]
+}
