@@ -7,9 +7,7 @@ export const App = () => {
   return (
     <ChakraProvider>
       <BrowserRouter>
-        <Flex bg="lightcoral"
-        flexDirection={"column"}
-        minHeight="100vh">
+        <Flex flexDirection={"column"} minHeight="100vh">
           {/* <Navigation /> */}
           <AppRouts />
         </Flex>
