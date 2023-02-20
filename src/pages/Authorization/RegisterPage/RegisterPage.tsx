@@ -1,5 +1,9 @@
+import { AuthorizationLayout } from "../components";
+
 export const RegisterPage = () => {
   return (
-    <>login</>
-  )
-}
+    <AuthorizationLayout header={"Zarejestruj się"}>
+      register
+    </AuthorizationLayout>
+  );
+};

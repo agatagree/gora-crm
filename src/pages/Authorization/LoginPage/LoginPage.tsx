@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Link as RouterLink } from "react-router-dom";
 import { AuthorizationLayout } from "../components";
 import {
   Button,
@@ -8,6 +9,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  Link,
 } from "@chakra-ui/react";
 
 type FormData = {
@@ -66,8 +68,12 @@ export const LoginPage = () => {
         </Flex>
       </form>
       <Flex justifyContent={"space-between"}>
-        <Button variant="link">Utwórz konto</Button>
-        <Button variant="link">Przypomnij hasło</Button>
+        <Link as={RouterLink} to="/register">
+          <Button variant="link">Utwórz konto</Button>
+        </Link>
+        <Link as={RouterLink} to="/passwordRecovery">
+          <Button variant="link">Przypomnij hasło</Button>
+        </Link>
       </Flex>
     </AuthorizationLayout>
   );

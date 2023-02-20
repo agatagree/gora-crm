@@ -1,5 +1,9 @@
+import { AuthorizationLayout } from "../components";
+
 export const PasswordRecovery = () => {
   return (
-    <>PasswordRecovery</>
-  )
-}
+    <AuthorizationLayout header={"Znajdź swój adres e-mail"}>
+      passwordrecovery
+    </AuthorizationLayout>
+  );
+};

@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
+
 import { Flex, Card, CardBody, Heading } from "@chakra-ui/react";
+import { Logo } from "components";
 
 type LayoutTypes = {
   children: ReactNode;
@@ -19,6 +21,9 @@ export const AuthorizationLayout = ({ children, header }: LayoutTypes) => {
     >
       <Card minH={400} maxW="md" minW="sm">
         <CardBody py={12}>
+          <Flex justifyContent={"center"} mb={6}>
+            <Logo />
+          </Flex>
           <Heading textAlign={["center"]} mb={12}>
             {header}
           </Heading>

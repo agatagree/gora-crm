@@ -10,7 +10,7 @@ export const App = () => {
         <Flex bg="lightcoral"
         flexDirection={"column"}
         minHeight="100vh">
-          <Navigation />
+          {/* <Navigation /> */}
           <AppRouts />
         </Flex>
       </BrowserRouter>
