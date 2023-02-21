@@ -1,5 +1,4 @@
 export * from "./Authorization/LoginPage/LoginPage"
 export * from "./Authorization/RegisterPage/RegisterPage"
 export * from "./Authorization/PasswordRecovery/PasswordRecovery"
-export * from "./Authorization/components/AuthorizationLayout/AuthorizationLayout"
 export * from "./Dashboard/Dashboard"

@@ -8,18 +8,16 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-
-type FormData = {
-  email: string;
-  password: string;
-};
+import { FormData } from "pages/Authorization/types/AuthorizationTypes";
 
 type SubmitHandlerType = (data: FormData, event?: BaseSyntheticEvent) => void;
 
-export const AuthorizationForm = ({
-  onSubmit, submitType
+export const AuthorizationEmailPassword = ({
+  onSubmit,
+  submitType,
 }: {
-  onSubmit: SubmitHandlerType, submitType: string
+  onSubmit: SubmitHandlerType;
+  submitType: string;
 }) => {
   const {
     handleSubmit,
@@ -30,7 +28,7 @@ export const AuthorizationForm = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flex flexDirection={"column"} gap={10}>
-        <FormControl isInvalid={!!errors.email}>
+        <FormControl isRequired isInvalid={!!errors.email}>
           <FormLabel htmlFor="email">Adres e-mail</FormLabel>
           <Input
             id="email"
@@ -43,7 +41,7 @@ export const AuthorizationForm = ({
             {errors.email && errors.email.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl isInvalid={!!errors.email}>
+        <FormControl isRequired isInvalid={!!errors.email}>
           <FormLabel htmlFor="password">Wpisz hasło</FormLabel>
           <Input
             id="password"

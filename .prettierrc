@@ -3,7 +3,8 @@
   "useTabs": false,
   "importOrder": [
     "^react(.*)",
-    "^firebase(.*)",
+    "^@firebase(.*)",
+    "^@chakra(.*)",
     "^api",
     "^locales",
     "^routes/",

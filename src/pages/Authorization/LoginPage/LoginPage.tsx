@@ -1,19 +1,10 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Link as RouterLink } from "react-router-dom";
-import { auth } from "api";
-import { AuthorizationForm, AuthorizationLayout } from "../components";
-import {
-  Button,
-  Flex,
-  Link,
-  useToast,
-} from "@chakra-ui/react";
 import { signInWithEmailAndPassword } from "@firebase/auth";
-
-type FormData = {
-  email: string;
-  password: string;
-};
+import { Button, Flex, Link, useToast } from "@chakra-ui/react";
+import { auth } from "api";
+import { AuthorizationEmailPassword, AuthorizationLayout } from "../components";
+import { FormData } from "../types/AuthorizationTypes";
 
 export const LoginPage = () => {
   const toast = useToast();
@@ -43,7 +34,10 @@ export const LoginPage = () => {
 
   return (
     <AuthorizationLayout header={"Zaloguj się"}>
-      <AuthorizationForm onSubmit={onSubmit} submitType={"Zaloguj się"}/>
+      <AuthorizationEmailPassword
+        onSubmit={onSubmit}
+        submitType={"Zaloguj się"}
+      />
       <Flex justifyContent={"space-between"}>
         <Link as={RouterLink} to="/register">
           <Button variant="link">Utwórz konto</Button>
