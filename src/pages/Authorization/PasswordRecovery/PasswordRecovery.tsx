@@ -1,19 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Link as RouterLink } from "react-router-dom";
 import { sendPasswordResetEmail } from "@firebase/auth";
-import {
-  useToast,
-  Link,
-  Button,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
+import { useToast, Link, Button } from "@chakra-ui/react";
 import { auth } from "api";
-import { AuthorizationLayout } from "../components";
+import { AuthorizationForm, AuthorizationLayout } from "../components";
 import { EmailData } from "../types/AuthorizationTypes";
+import { InputForm } from "components";
 
 export const PasswordRecovery = () => {
   const toast = useToast();
@@ -21,7 +13,7 @@ export const PasswordRecovery = () => {
     handleSubmit,
     register,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<EmailData>();
 
   const onSubmit: SubmitHandler<EmailData> = (data, event?) => {
@@ -48,26 +40,19 @@ export const PasswordRecovery = () => {
 
   return (
     <AuthorizationLayout header={"Przypomnij hasło"}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Flex flexDirection={"column"} gap={10}>
-          <FormControl isRequired isInvalid={!!errors.email}>
-            <FormLabel htmlFor="email">Adres e-mail</FormLabel>
-            <Input
-              id="email"
-              placeholder="E-mail"
-              {...register("email", {
-                required: "Pole wymagane",
-              })}
-            />
-            <FormErrorMessage>
-              {errors.email && errors.email.message}
-            </FormErrorMessage>
-          </FormControl>
-          <Button mt={4} mb={12} isLoading={isSubmitting} type="submit">
-            Szukaj
-          </Button>
-        </Flex>
-      </form>
+      <AuthorizationForm
+        submitForm={handleSubmit(onSubmit)}
+        submitBtnType={"Szukaj"}
+        loadWhenSubmitting={isSubmitting}
+      >
+        <InputForm
+          inputValue={"email"}
+          inputPlaceholder={"Podaj adres e-mail"}
+          inputLabel={"E-mail"}
+          {...register("email")}
+          required
+        />
+      </AuthorizationForm>
       <Link as={RouterLink} to="/">
         <Button variant="link">Wróć do logowania</Button>
       </Link>

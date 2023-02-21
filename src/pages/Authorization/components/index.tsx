@@ -1,2 +1,3 @@
-export * from "./AuthorizationLayout/AuthorizationLayout"
-export * from "./AuthorizationEmailPassword/AuthorizationEmailPassword"
+export * from "./AuthorizationLayout"
+export * from "./AuthorizationEmailPassword"
+export * from "./AuthorizationForm"
