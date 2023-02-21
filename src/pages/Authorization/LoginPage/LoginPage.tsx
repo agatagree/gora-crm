@@ -1,25 +1,31 @@
+import { useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "@firebase/auth";
-import { Button, Flex, Link, useToast } from "@chakra-ui/react";
+import { Button, Link, useToast } from "@chakra-ui/react";
 import { auth } from "api";
-import { AuthorizationEmailPassword, AuthorizationLayout } from "../components";
+import { AuthorizationLayout, AuthorizationForm } from "../components";
 import { FormData } from "../types/AuthorizationTypes";
+import { InputForm } from "components";
+import { AuthContext } from "provider/AuthProvider";
 
 export const LoginPage = () => {
   const toast = useToast();
-  const { reset } = useForm<FormData>();
+  const {
+    reset,
+    handleSubmit,
+    register,
+    formState: { isSubmitting },
+  } = useForm<FormData>();
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FormData> = (data, event?) => {
     event?.preventDefault();
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
-        toast({
-          title: `Witaj ${userCredential.user.email}`,
-          status: "success",
-          position: "bottom-left",
-          isClosable: true,
-        });
+      .then(() => {
+        setUser(data.email);
+        navigate("/admin");
         reset();
       })
       .catch((error) => {
@@ -34,18 +40,29 @@ export const LoginPage = () => {
 
   return (
     <AuthorizationLayout header={"Zaloguj się"}>
-      <AuthorizationEmailPassword
-        onSubmit={onSubmit}
-        submitType={"Zaloguj się"}
-      />
-      <Flex justifyContent={"space-between"}>
-        <Link as={RouterLink} to="/register">
-          <Button variant="link">Utwórz konto</Button>
-        </Link>
-        <Link as={RouterLink} to="/passwordRecovery">
-          <Button variant="link">Przypomnij hasło</Button>
-        </Link>
-      </Flex>
+      <AuthorizationForm
+        submitForm={handleSubmit(onSubmit)}
+        submitBtnType={"Zaloguj się"}
+        loadWhenSubmitting={isSubmitting}
+      >
+        <InputForm
+          inputValue={"email"}
+          inputPlaceholder={"Podaj adres e-mail"}
+          inputLabel={"E-mail"}
+          {...register("email")}
+          required
+        />
+        <InputForm
+          inputValue={"password"}
+          inputPlaceholder={"Podaj hasło"}
+          inputLabel={"Hasło"}
+          {...register("password")}
+          required
+        />
+      </AuthorizationForm>
+      <Link as={RouterLink} to="/passwordRecovery">
+        <Button variant="link">Przypomnij hasło</Button>
+      </Link>
     </AuthorizationLayout>
   );
 };

@@ -1,5 +1,5 @@
 export const Dashboard = () => {
   return (
-    <>Dashboard</>
+    <>dashboard</>
   )
 }

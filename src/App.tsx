@@ -1,15 +1,16 @@
 import { BrowserRouter } from "react-router-dom";
-import { AppRouts } from "routes/AppRouts";
 import { ChakraProvider, Flex } from "@chakra-ui/react";
-import { Navigation } from "components";
+import { AppRouts } from "routes/AppRouts";
+import { AuthProvider } from "provider/AuthProvider";
 
 export const App = () => {
   return (
     <ChakraProvider>
       <BrowserRouter>
         <Flex flexDirection={"column"} minHeight="100vh">
-          {/* <Navigation /> */}
-          <AppRouts />
+          <AuthProvider>
+            <AppRouts />
+          </AuthProvider>
         </Flex>
       </BrowserRouter>
     </ChakraProvider>

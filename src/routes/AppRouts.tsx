@@ -1,14 +1,24 @@
 import { Routes, Route } from "react-router-dom";
 import { AlertMesssage } from "components";
-import { Dashboard, LoginPage, RegisterPage, PasswordRecovery } from "pages";
+import {
+  LoginPage,
+  PasswordRecovery,
+  AdminPanel,
+  PendingPosts,
+  BannerPosts,
+  SettingsPage,
+} from "pages";
 
 export const AppRouts = () => {
   return (
     <Routes>
       <Route path="/" element={<LoginPage />} />
-      <Route path="register" element={<RegisterPage />} />
       <Route path="passwordRecovery" element={<PasswordRecovery />} />
-      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="admin" element={<AdminPanel />}>
+        <Route path="pending" element={<PendingPosts />} />
+        <Route path="banner" element={<BannerPosts />} />
+        <Route path="settings" element={<SettingsPage />} />
+      </Route>
       <Route path="*" element={<AlertMesssage message={"pageNotFound"} />} />
     </Routes>
   );
