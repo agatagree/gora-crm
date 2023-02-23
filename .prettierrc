@@ -5,6 +5,7 @@
     "^react(.*)",
     "^@firebase(.*)",
     "^@chakra(.*)",
+    "^@tanstack(.*)",
     "^api",
     "^locales",
     "^routes/",

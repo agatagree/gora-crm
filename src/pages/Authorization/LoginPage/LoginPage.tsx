@@ -25,7 +25,7 @@ export const LoginPage = () => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then(() => {
         setUser(data.email);
-        navigate("/admin");
+        navigate("/dashboard");
         reset();
       })
       .catch((error) => {

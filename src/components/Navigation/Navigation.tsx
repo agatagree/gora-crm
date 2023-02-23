@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Button, Text, Flex, Container, Wrap, Box } from "@chakra-ui/react";
+import { Text, Flex, Box } from "@chakra-ui/react";
 import { LogOutIcon, SettingsIcon } from "components/Icons";
 import { NavButton } from "./NavButton";
 import { MainNavigation } from "./NavigationList";
@@ -44,7 +44,7 @@ export const Navigation = () => {
           linkTo={"settings"}
         />
         <NavButton
-          text={"Ustawienia"}
+          text={"Wyloguj się"}
           logo={<LogOutIcon boxSize={8} />}
           onClick={() => setUser("")}
           linkTo={"/"}
