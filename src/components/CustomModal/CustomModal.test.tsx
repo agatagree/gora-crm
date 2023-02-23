@@ -3,7 +3,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("CustomModal component", () => {
-  it("Modal renders when isOpen is true", () => {
+  it("modal renders when isOpen is true", () => {
     render(
       <CustomModal
         onClose={() => {}}
@@ -18,7 +18,7 @@ describe("CustomModal component", () => {
     expect(modal).toBeInTheDocument();
   });
 
-  it("Modal do not renders when isOpen is false", () => {
+  it("modal do not renders when isOpen is false", () => {
     render(
       <CustomModal
         onClose={() => {}}
@@ -33,7 +33,7 @@ describe("CustomModal component", () => {
     expect(modal).not.toBeInTheDocument();
   });
 
-  it("Calls onClose when there is click on Close Button", () => {
+  it("calls onClose when there is click on Close Button", () => {
     const handleClose = jest.fn();
     render(
       <CustomModal
@@ -50,7 +50,7 @@ describe("CustomModal component", () => {
     expect(handleClose).toHaveBeenCalledTimes(1);
   });
 
-  it("Calls onClose when there is click on Submit Button", () => {
+  it("calls onClose when there is click on Submit Button", () => {
     const handleClose = jest.fn();
     render(
       <CustomModal
@@ -67,7 +67,7 @@ describe("CustomModal component", () => {
     expect(handleClose).toHaveBeenCalledTimes(1);
   });
 
-  it("Modal do not close when there is click on overlay", () => {
+  it("modal do not close when there is click on overlay", () => {
     const handleClose = jest.fn();
     render(
       <CustomModal
@@ -84,7 +84,7 @@ describe("CustomModal component", () => {
     expect(handleClose).toHaveBeenCalledTimes(0);
   });
 
-  it("Modal renders with proper title, content", () => {
+  it("modal renders with proper title, content", () => {
     render(
       <CustomModal
         onClose={() => {}}

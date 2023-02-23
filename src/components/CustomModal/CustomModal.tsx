@@ -34,10 +34,7 @@ export const CustomModal = ({
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>{children}
-        {Array.from(Array(100)).map((_, idx) => (
-            <p key={idx}>Lorem ipsum</p>
-          ))}</ModalBody>
+        <ModalBody>{children}</ModalBody>
         <ModalFooter>
           <Button onClick={onClose}>{submitBtnLabel}</Button>
         </ModalFooter>
