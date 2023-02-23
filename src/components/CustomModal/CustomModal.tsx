@@ -27,14 +27,17 @@ export const CustomModal = ({
     <Modal
       onClose={onClose}
       isOpen={isOpen}
-      scrollBehavior={"outside"}
+      scrollBehavior={"inside"} //AG: czy powinnam to testować? czy to nie ui?
       closeOnOverlayClick={false}
     >
-      <ModalOverlay />
+      <ModalOverlay data-testid="modal-overlay" />
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>{children}f</ModalBody>
+        <ModalBody>{children}
+        {Array.from(Array(100)).map((_, idx) => (
+            <p key={idx}>Lorem ipsum</p>
+          ))}</ModalBody>
         <ModalFooter>
           <Button onClick={onClose}>{submitBtnLabel}</Button>
         </ModalFooter>

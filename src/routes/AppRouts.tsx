@@ -25,7 +25,7 @@ export const AppRouts = () => {
         <Route path="pending" element={<PendingPosts />} />
         <Route path="banner" element={<BannerPosts />} />
         <Route path="settings" element={<SettingsPage />} />
-        <Route path="*" element={<AlertMessage message={"underConstruction"} />} />
+        <Route path="*" element={<AlertMessage message={"pageNotFound"} />} />
       </Route>
       <Route path="*" element={<AlertMessage message={"pageNotFound"} />} />
     </Routes>
