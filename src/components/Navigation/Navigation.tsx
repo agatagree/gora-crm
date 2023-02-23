@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Text, Flex, Box } from "@chakra-ui/react";
 import { LogOutIcon, SettingsIcon } from "components/Icons";
 import { NavButton } from "./NavButton";
-import { MainNavigation } from "./NavigationList";
+import { NavList } from "./NavList";
 import { Logo } from "components";
 import { AuthContext } from "provider/AuthProvider";
 
@@ -28,7 +28,7 @@ export const Navigation = () => {
           <Logo />
           <Text fontSize="2xl">Panel Admina</Text>
         </Flex>
-        {Object.values(MainNavigation).map((btn) => (
+        {Object.values(NavList).map((btn) => (
           <NavButton
             key={btn.id}
             text={btn.text}

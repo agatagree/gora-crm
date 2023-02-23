@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { AlertMesssage } from "components";
+import { AlertMessage } from "components";
 import {
   LoginPage,
   PasswordRecovery,
@@ -25,9 +25,9 @@ export const AppRouts = () => {
         <Route path="pending" element={<PendingPosts />} />
         <Route path="banner" element={<BannerPosts />} />
         <Route path="settings" element={<SettingsPage />} />
-        <Route path="*" element={<AlertMesssage message={"pageNotFound"} />} />
+        <Route path="*" element={<AlertMessage message={"underConstruction"} />} />
       </Route>
-      <Route path="*" element={<AlertMesssage message={"pageNotFound"} />} />
+      <Route path="*" element={<AlertMessage message={"pageNotFound"} />} />
     </Routes>
   );
 };

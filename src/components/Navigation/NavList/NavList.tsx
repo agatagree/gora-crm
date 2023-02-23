@@ -5,7 +5,7 @@ import {
   AddIcon,
 } from "components/Icons";
 
-export const MainNavigation = {
+export const NavList = {
   dashboard: {
     id: 1,
     text: "Panel zarządzania",

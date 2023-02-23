@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Flex, useDisclosure } from "@chakra-ui/react";
 import { galleryCollection, getDataFromSnapshot } from "api";
 import { DataTable, DashboardNav, Filtration } from "./components";
-import { AlertMesssage, Loader } from "components";
+import { AlertMessage, Loader } from "components";
 import { onSnapshot } from "firebase/firestore";
 import { GalleryType } from "types/Types";
 
@@ -30,7 +30,7 @@ export const Dashboard = () => {
           {isOpen && <Filtration onClose={onClose} isOpen={isOpen} />}
         </Flex>
       ) : (
-        <AlertMesssage message={404} />
+        <AlertMessage message={404} />
       )}
     </>
   );
