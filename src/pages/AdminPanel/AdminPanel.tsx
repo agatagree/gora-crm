@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Navigation } from "components";
 import { AuthContext } from "provider/AuthProvider";
 

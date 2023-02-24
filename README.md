@@ -1,3 +1,45 @@
+## Project Overview
+
+CRM app for [Gora gallery website](https://gora0-8bdf5.web.app/)
+There are 2 layers of the app:
+🔐 Authentication
+📊 Admin Panel ( available only for login users)
+
+Admin will be able to see all gallery items, sort, filter through them, see details and edit single art piece.
+Additionally there will be avability to add new item, change main banner content, change settings account ( as password, e-mail );
+
+## Tech/framework used
+
+| Tech                                                    |
+| ------------------------------------------------------- |
+| [React](https://reactjs.org/)                           |
+| [Typescript](https://www.typescriptlang.org/)           |
+| [React Router](https://reacttraining.com/react-router/) |
+| [Chakra-UI](https://chakra-ui.com/)                     |
+| [TanStack Table](https://tanstack.com/table/v8)         |
+| [React Hook Form](https://react-hook-form.com/)         |
+| [Unit tests](https://reactjs.org/docs/testing.html)     |
+| [Eslint](https://eslint.org/)                           |
+| [Prettier](https://prettier.io/)                        |
+| [Firebase](https://firebase.google.com/)                |
+
+## Installation in short:
+
+```bash
+
+git clone https://github.com/agatagree/gora-crm.git
+
+npm install
+
+create .env file with your private API key
+
+npm run start
+
+npm test
+```
+
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

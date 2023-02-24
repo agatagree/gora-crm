@@ -4,7 +4,7 @@ import { NavButton } from "./NavButton";
 import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-describe.only("NavButton component", () => {
+describe("NavButton component", () => {
   const testClick = jest.fn();
   it("should render button with defined props", () => {
     render(
