@@ -49,7 +49,6 @@ export const DataTable = ({ data }: { data: GalleryType[] }) => {
                       )
                     ) : null}
                   </chakra.span>
-
                 </Th>
               );
             })}
@@ -64,7 +63,9 @@ export const DataTable = ({ data }: { data: GalleryType[] }) => {
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </Td>
             ))}
-            <Td><EditIcon /></Td>
+            <Td>
+              <EditIcon />
+            </Td>
           </Tr>
         ))}
       </Tbody>

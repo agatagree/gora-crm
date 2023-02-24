@@ -48,6 +48,7 @@ describe("LoginPage component", () => {
       fireEvent.click(screen.getByRole("button", { name: "Zaloguj się" }));
     });
 
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     await waitFor(() => expect(user).toEqual(""));
   });
 });
