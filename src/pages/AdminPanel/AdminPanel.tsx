@@ -12,7 +12,12 @@ export const AdminPanel = () => {
   return (
     <Flex w="100%" h="100%" flex={1}>
       <Navigation />
-      <Flex flexDirection={"column"} flexGrow={1} sx={{ overflow: "auto" }} pt={30}>
+      <Flex
+        flexDirection={"column"}
+        flexGrow={1}
+        sx={{ overflow: "auto" }}
+        pt={30}
+      >
         <Outlet />
       </Flex>
     </Flex>
