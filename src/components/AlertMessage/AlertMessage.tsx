@@ -5,7 +5,7 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 
-type AlertType = "info" | "warning" | "success" | "error" | "loading" ;
+type AlertType = "info" | "error" ;
 
 const messageVariant = {
   404: {
@@ -15,13 +15,13 @@ const messageVariant = {
   },
   underConstruction: {
     alertStatus: "info" as AlertType,
-    alertTitle: "Przepraszamy, strona w budowie",
+    alertTitle: "Przepraszamy, strona w budowie.",
     alertDescription: ""
   },
   pageNotFound: {
     alertStatus: "error" as AlertType,
     alertTitle: "Ups!",
-    alertDescription: "strona o podanym adresie nie istnieje"
+    alertDescription: "Strona o podanym adresie nie istnieje."
   },
 };
 
@@ -29,7 +29,7 @@ type MessageType = {
   message: keyof typeof messageVariant;
 }
 
-export const AlertMesssage = ({ message } : MessageType) => {
+export const AlertMessage = ({ message } : MessageType) => {
   return (
     <Alert status={messageVariant[message].alertStatus}>
       <AlertIcon />
