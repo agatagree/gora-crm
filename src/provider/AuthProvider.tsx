@@ -6,14 +6,14 @@ type userType = {
 };
 
 const initialState: userType = {
-  user: "agata",
+  user: "",
   setUser: () => {},
 };
 
 export const AuthContext = createContext<userType>(initialState);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState("agata");
+  const [user, setUser] = useState("");
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       {children}
