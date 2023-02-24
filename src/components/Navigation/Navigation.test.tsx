@@ -2,7 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import { NavList } from "./NavList";
 import { Navigation } from "./Navigation";
 import "@testing-library/jest-dom/extend-expect";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { AuthContext } from "provider/AuthProvider";
 
 describe("Navigation component", () => {

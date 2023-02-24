@@ -23,6 +23,7 @@ export const Dashboard = () => {
   }
   return (
     <>
+    <Flex p={10}>
       {data.length > 0 ? (
         <Flex flexDirection={"column"}>
           <DashboardNav onOpen={onOpen} />
@@ -32,6 +33,7 @@ export const Dashboard = () => {
       ) : (
         <AlertMessage message={404} />
       )}
+      </Flex>
     </>
   );
 };

@@ -2,7 +2,7 @@ import { Icon, IconProps } from "@chakra-ui/react";
 
 export const LogOutIcon = (props: IconProps) => {
   return (
-    <Icon viewBox="0 0 24 24" color="none" {...props}>
+    <Icon viewBox="0 0 24 24" color="none" {...props} >
       <path
         fill="black"
         d="M5 5H11C11.55 5 12 4.55 12 4C12 3.45 11.55 3 11 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H11C11.55 21 12 20.55 12 20C12 19.45 11.55 19 11 19H5V5Z" 
