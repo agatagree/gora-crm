@@ -59,6 +59,7 @@ export const LoginPage = () => {
           inputLabel={"Hasło"}
           {...register("password")}
           required
+          password
         />
       </AuthorizationForm>
       <Link as={RouterLink} to="/passwordRecovery">
