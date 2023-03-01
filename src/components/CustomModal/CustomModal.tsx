@@ -27,7 +27,7 @@ export const CustomModal = ({
     <Modal
       onClose={onClose}
       isOpen={isOpen}
-      scrollBehavior={"inside"} //AG: czy powinnam to testować? czy to nie ui?
+      scrollBehavior={"inside"} 
       closeOnOverlayClick={false}
     >
       <ModalOverlay data-testid="modal-overlay" />

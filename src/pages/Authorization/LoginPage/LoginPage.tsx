@@ -34,7 +34,7 @@ export const LoginPage = () => {
           status: "error",
           position: "bottom-left",
           isClosable: true,
-          duration: 50000,
+          duration: 9000,
         });
       });
   };

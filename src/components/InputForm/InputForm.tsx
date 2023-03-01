@@ -7,6 +7,9 @@ import {
   InputGroup,
   InputRightElement,
   Button,
+  FormErrorMessage,
+  FormHelperText,
+  InputRightAddon,
 } from "@chakra-ui/react";
 
 type FormInputProps = {
@@ -15,16 +18,33 @@ type FormInputProps = {
   inputLabel: string;
   required?: boolean;
   password?: boolean;
+  isInvalid?: boolean;
+  helperText?: string;
+  inputType?: "text" | "password" | "number";
+  cm?: boolean;
 };
 
 export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
   (
-    { inputValue, inputPlaceholder, inputLabel, required, password, ...props },
+    {
+      inputValue,
+      inputPlaceholder,
+      inputLabel,
+      required,
+      password,
+      isInvalid,
+      helperText,
+      inputType,
+      cm,
+      ...props
+    },
     ref
   ) => {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
-    let inputType = "text";
+    if (!inputType) {
+      inputType = "text";
+    }
     if (show && password) {
       inputType = "text";
     }
@@ -32,7 +52,7 @@ export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
       inputType = "password";
     }
     return (
-      <FormControl isRequired={required}>
+      <FormControl isRequired={required} isInvalid={!!isInvalid}>
         <FormLabel htmlFor={inputValue}>{inputLabel}</FormLabel>
         <InputGroup>
           <Input
@@ -41,6 +61,7 @@ export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
             placeholder={inputPlaceholder}
             ref={ref}
             type={inputType}
+            aria-invalid={isInvalid ? "true" : "false"}
           />
           {password && (
             <InputRightElement width="4.5rem">
@@ -54,7 +75,15 @@ export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
               </Button>
             </InputRightElement>
           )}
+          {cm && <InputRightAddon children="cm" />}
         </InputGroup>
+        {!isInvalid ? (
+          <FormHelperText>{helperText}</FormHelperText>
+        ) : (
+          <FormErrorMessage>
+            {isInvalid && `Pole jest wymagane`}
+          </FormErrorMessage>
+        )}
       </FormControl>
     );
   }

@@ -1,5 +1,5 @@
-import { collection, doc } from "firebase/firestore";
 import { db } from "./firebase";
+import { collection, doc } from "firebase/firestore";
 
 export const urlStorage =
   "https://firebasestorage.googleapis.com/v0/b/gora-b0bf3.appspot.com/o/img%2F";
@@ -13,6 +13,8 @@ export const translationCollection = collection(db, collectionTranslations);
 
 export const collectionCategory = "/category";
 export const categoryCollection = collection(db, collectionCategory);
+export const singleCategoryCollection = (docId) =>
+  doc(db.categoryCollection, docId);
 
 export const collectionBanner = "banner";
 export const bannerStorage = "/banner";
