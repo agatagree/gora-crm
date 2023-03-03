@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import {
   FormErrorMessage,
@@ -14,11 +14,11 @@ type TagFormLayoutTypes = {
   children: ReactNode;
   isInvalid?: boolean;
   inputLabel: string;
-  inputValue: string;
+  inputValue?: string | undefined;
   addNewTag?: boolean;
 };
 
-export const TagFormLayout = ({
+export const TagFormLayout = memo(({
   children,
   isInvalid,
   inputLabel,
@@ -28,7 +28,7 @@ export const TagFormLayout = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <FormControl isInvalid={isInvalid}>
+      <FormControl isRequired isInvalid={isInvalid}>
         <Flex
           flexDirection={"row"}
           justifyContent={"space-between"}
@@ -50,9 +50,9 @@ export const TagFormLayout = ({
         {children}
         <FormErrorMessage>{isInvalid && `Pole jest wymagane`}</FormErrorMessage>
       </FormControl>
-      {isOpen && (
+      {(isOpen && inputValue) && (
         <AddTag onClose={onClose} isOpen={isOpen} category={inputValue} />
       )}
     </>
   );
-};
+});

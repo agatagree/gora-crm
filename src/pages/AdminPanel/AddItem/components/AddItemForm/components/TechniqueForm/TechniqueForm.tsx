@@ -1,15 +1,18 @@
 import { forwardRef } from "react";
 import { Select } from "@chakra-ui/react";
 import { TagFormLayout } from "pages/AdminPanel/AddItem/components";
+import { GalleryType } from "types/Types";
+import { UseFormRegister } from "react-hook-form";
 
 type TechniqueFormProps = {
   isInvalid?: boolean;
   technique: string[];
+  register: UseFormRegister<GalleryType>;
 };
 
 export const TechniqueForm = forwardRef<HTMLOptionElement, TechniqueFormProps>(
   (props, ref) => {
-    const { technique, isInvalid } = props;
+    const { technique, isInvalid, register } = props;
     return (
       <TagFormLayout
         inputLabel={"Technika wykonania"}
@@ -17,7 +20,9 @@ export const TechniqueForm = forwardRef<HTMLOptionElement, TechniqueFormProps>(
         isInvalid={isInvalid}
         addNewTag
       >
-        <Select placeholder={"-"} aria-invalid={isInvalid ? "true" : "false"}>
+        <Select placeholder={"-"} aria-invalid={isInvalid ? "true" : "false"}
+        {...register("technique", { required: true })}
+        >
           {technique.map((item) => (
             <option key={item} value={item} ref={ref}>
               {item}

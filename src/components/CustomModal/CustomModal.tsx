@@ -10,24 +10,28 @@ import {
   Button,
 } from "@chakra-ui/react";
 
+type CustomModalProps = {
+  onClose: () => void;
+  isOpen: boolean;
+  title: string;
+  children: ReactNode;
+  submitBtnLabel: string;
+  onClick?: () => void;
+};
+
 export const CustomModal = ({
   onClose,
   isOpen,
   title,
   children,
   submitBtnLabel,
-}: {
-  onClose: () => void;
-  isOpen: boolean;
-  title: string;
-  children: ReactNode;
-  submitBtnLabel: string;
-}) => {
+  onClick,
+}: CustomModalProps) => {
   return (
     <Modal
       onClose={onClose}
       isOpen={isOpen}
-      scrollBehavior={"inside"} 
+      scrollBehavior={"inside"}
       closeOnOverlayClick={false}
     >
       <ModalOverlay data-testid="modal-overlay" />
@@ -36,7 +40,9 @@ export const CustomModal = ({
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
         <ModalFooter>
-          <Button onClick={onClose}>{submitBtnLabel}</Button>
+          <Button >
+            {submitBtnLabel}
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

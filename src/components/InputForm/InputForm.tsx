@@ -13,14 +13,15 @@ import {
 } from "@chakra-ui/react";
 
 type FormInputProps = {
-  inputValue: string;
+  inputValue?: string;
   inputPlaceholder: string;
-  inputLabel: string;
+  inputLabel?: string;
   required?: boolean;
   password?: boolean;
   isInvalid?: boolean;
   helperText?: string;
-  inputType?: "text" | "password" | "number";
+  // onChange?: () => void | undefined;
+  inputType?: "text" | "password" | "number" | "file";
   cm?: boolean;
 };
 
@@ -35,6 +36,7 @@ export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
       isInvalid,
       helperText,
       inputType,
+      // onChange,
       cm,
       ...props
     },
@@ -62,6 +64,7 @@ export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
             ref={ref}
             type={inputType}
             aria-invalid={isInvalid ? "true" : "false"}
+            // onChange={onChange}
           />
           {password && (
             <InputRightElement width="4.5rem">

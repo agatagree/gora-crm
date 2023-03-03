@@ -7,7 +7,7 @@
     "^@chakra(.*)",
     "^@tanstack(.*)",
     "^api",
-    "^locales",
+    "^types",
     "^routes/",
     "^components/",
     "^utils",

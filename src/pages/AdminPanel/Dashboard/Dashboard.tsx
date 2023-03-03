@@ -18,6 +18,8 @@ export const Dashboard = () => {
     });
   }, [load]);
 
+  const handleClick = () => { return }
+
   if (load) {
     return <Loader />;
   }
@@ -27,7 +29,7 @@ export const Dashboard = () => {
         <Flex flexDirection={"column"}>
           <DashboardNav onOpen={onOpen} />
           <DataTable data={data} />
-          {isOpen && <Filtration onClose={onClose} isOpen={isOpen} />}
+          {isOpen && <Filtration onClose={onClose} isOpen={isOpen} onClick={handleClick}/>}
         </Flex>
       ) : (
         <AlertMessage message={404} />
