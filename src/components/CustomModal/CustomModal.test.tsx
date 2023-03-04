@@ -9,7 +9,6 @@ describe("CustomModal component", () => {
         onClose={() => {}}
         isOpen={true}
         title="Test title"
-        submitBtnLabel="Test Btn"
       >
         <p>test child</p>
       </CustomModal>
@@ -24,7 +23,6 @@ describe("CustomModal component", () => {
         onClose={() => {}}
         isOpen={false}
         title="Test title"
-        submitBtnLabel="Test Btn"
       >
         <p>test child</p>
       </CustomModal>
@@ -40,30 +38,12 @@ describe("CustomModal component", () => {
         onClose={handleClose}
         isOpen={true}
         title="Test title"
-        submitBtnLabel="Test Btn"
       >
         <p>test child</p>
       </CustomModal>
     );
     const closeBtn = screen.getByLabelText("Close");
     fireEvent.click(closeBtn);
-    expect(handleClose).toHaveBeenCalledTimes(1);
-  });
-
-  it("calls onClose when there is click on Submit Button", () => {
-    const handleClose = jest.fn();
-    render(
-      <CustomModal
-        onClose={handleClose}
-        isOpen={true}
-        title="Test title"
-        submitBtnLabel="Test Btn"
-      >
-        <p>test child</p>
-      </CustomModal>
-    );
-    const submitBtn = screen.getByText("Test Btn");
-    fireEvent.click(submitBtn);
     expect(handleClose).toHaveBeenCalledTimes(1);
   });
 
@@ -74,7 +54,6 @@ describe("CustomModal component", () => {
         onClose={handleClose}
         isOpen={true}
         title="Test title"
-        submitBtnLabel="Test Btn"
       >
         <p>test child</p>
       </CustomModal>
@@ -90,7 +69,6 @@ describe("CustomModal component", () => {
         onClose={() => {}}
         isOpen={true}
         title="Test title"
-        submitBtnLabel="Test Btn"
       >
         <p>test child</p>
       </CustomModal>

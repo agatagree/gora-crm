@@ -15,8 +15,6 @@ type CustomModalProps = {
   isOpen: boolean;
   title: string;
   children: ReactNode;
-  submitBtnLabel: string;
-  onClick?: () => void;
 };
 
 export const CustomModal = ({
@@ -24,8 +22,6 @@ export const CustomModal = ({
   isOpen,
   title,
   children,
-  submitBtnLabel,
-  onClick,
 }: CustomModalProps) => {
   return (
     <Modal
@@ -40,8 +36,8 @@ export const CustomModal = ({
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
         <ModalFooter>
-          <Button >
-            {submitBtnLabel}
+          <Button onClick={onClose}>
+            Zamknij
           </Button>
         </ModalFooter>
       </ModalContent>

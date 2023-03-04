@@ -1,10 +1,8 @@
-import { CustomModal, InputForm } from "components";
-import { useEffect, useState } from "react";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
-import { Button, Flex, useToast } from "@chakra-ui/react";
-import { categoryCollection } from "api";
-import { TagsType } from "types/Types";
-import { addDoc } from "firebase/firestore";
+import { Button, useToast } from "@chakra-ui/react";
+import { categoryRef, translateRef } from "api";
+import { CustomModal, InputForm } from "components";
+import { arrayUnion, setDoc, updateDoc } from "firebase/firestore";
 
 type AddTagProps = {
   onClose: () => void;
@@ -14,19 +12,32 @@ type AddTagProps = {
 
 export const AddTag = ({ onClose, isOpen, category }: AddTagProps) => {
   const toast = useToast();
-  
+
   const {
     handleSubmit,
     register,
     reset,
-    watch,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful },
   } = useForm();
 
   const submit: SubmitHandler<FieldValues> = (data, event?) => {
-    event?.preventDefault()
+    event?.preventDefault();
 
-    addDoc(categoryCollection, data)
+    updateDoc(categoryRef, {
+      shape: arrayUnion(data.shape),
+    });
+    setDoc(
+      translateRef,
+      {
+        EN: {
+          [data.shape]: data.shape,
+        },
+        PL: {
+          [data.shape]: data.PL,
+        },
+      },
+      { merge: true }
+    )
       .then((_response) => {
         toast({
           title: "Tag został dodany",
@@ -54,15 +65,28 @@ export const AddTag = ({ onClose, isOpen, category }: AddTagProps) => {
   return (
     <CustomModal
       title={`Dodaj nowy tag w kategorii: ${category}`}
-      submitBtnLabel={"Dodaj"}
       onClose={onClose}
       isOpen={isOpen}
-      onClick={handleSubmit(submit)}
     >
       <InputForm
-        inputPlaceholder={"Podaj nowy tag"}
+        inputLabel={"Podaj nowy tag w języku angielskim:"}
+        inputPlaceholder={"tag"}
+        isInvalid={!!errors.category}
+        required
         {...register(category, { required: true })}
       />
+
+      <InputForm
+        inputLabel={"Dodaj polskie tłumaczenie:"}
+        inputPlaceholder={"tag"}
+        isInvalid={!!errors.category}
+        required
+        {...register("PL", { required: true })}
+      />
+
+      <Button onClick={handleSubmit(submit)} type="submit">
+        Dodaj
+      </Button>
     </CustomModal>
   );
 };

@@ -10,11 +10,13 @@ export const singleArtCollection = (docId) => doc(db, collectionGallery, docId);
 
 export const collectionTranslations = "/translate";
 export const translationCollection = collection(db, collectionTranslations);
+// export const translateRef = doc(db, "translate", "aU1UHbflHpRNcqhiEwJm");
+export const translateRef = doc(db, "trans", "I7brRCjfonD5VeJ6r75i");
+
 
 export const collectionCategory = "/category";
 export const categoryCollection = collection(db, collectionCategory);
-export const singleCategoryCollection = (docId) =>
-  doc(db.categoryCollection, docId);
+export const categoryRef = doc(db, "category", "ryArkQ5SyJugx72ClM9P");
 
 export const collectionBanner = "banner";
 export const bannerStorage = "/banner";
