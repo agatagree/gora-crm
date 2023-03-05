@@ -1,26 +1,10 @@
 import { Box, Image } from "@chakra-ui/react";
 import { createColumnHelper } from "@tanstack/react-table";
+import { MainGalleryTypes } from "types/Types";
 import { CircleIcon } from "components/Icons";
 
-type TableHeaderTypes = {
-  title: string;
-  code: string;
-  color: string[];
-  technique: string;
-  year: number;
-  availability: string;
-  shape: string;
-  dimensions: {
-    width: number;
-    height: number;
-  };
-  img: {
-    cover: string;
-  };
-};
-
 export const getColumns = () => {
-  const columnHelper = createColumnHelper<TableHeaderTypes>();
+  const columnHelper = createColumnHelper<MainGalleryTypes>();
 
   const columns = [
     columnHelper.accessor("img.cover", {
@@ -30,6 +14,9 @@ export const getColumns = () => {
           <Image h={16} objectFit="contain" src={info.getValue()} />
         </Box>
       ),
+    }),
+    columnHelper.accessor("order", {
+      header: "L.P.",
     }),
     columnHelper.accessor("title", {
       header: "Tytuł",
@@ -68,7 +55,7 @@ export const getColumns = () => {
           </Box>
         );
       },
-    })
+    }),
   ];
 
   return { columns };
