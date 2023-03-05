@@ -14,7 +14,7 @@ export const Navigation = () => {
       as="nav"
       flexDirection={"column"}
       justifyContent={"space-between"}
-      w="300px"
+      w="324px"
       bg="white"
       boxShadow="md"
       h="100vh"
@@ -24,7 +24,7 @@ export const Navigation = () => {
       p={30}
     >
       <Box>
-        <Flex flexDirection="row" alignItems="center" gap={3} mb={20}>
+        <Flex flexDirection="row" alignItems="center" gap={3} mb={20} whiteSpace={"nowrap"}>
           <Logo />
           <Text fontSize="2xl">Panel Admina</Text>
         </Flex>

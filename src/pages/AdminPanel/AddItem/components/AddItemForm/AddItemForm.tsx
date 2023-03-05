@@ -10,6 +10,7 @@ import {
   ShapeForm,
   ImgUploadSection,
 } from "./components";
+import { getGalleryIndex } from "./utils/getGalleryIndex";
 import { InputForm } from "components";
 import { addDoc } from "firebase/firestore";
 
@@ -33,7 +34,7 @@ export const AddItemForm = ({ data }: { data: TagsType[] }) => {
 
   const fullTitle = watch(["title", "code"]);
 
-  const submit: SubmitHandler<GalleryType> = (data, event?) => {
+  const submit: SubmitHandler<GalleryType> = async (data, event?) => {
     event?.preventDefault();
 
     if (img && Object.keys(img).length !== 3) {
@@ -46,14 +47,17 @@ export const AddItemForm = ({ data }: { data: TagsType[] }) => {
       });
       return;
     }
-
+    //get order number
+    const order = await getGalleryIndex();
+    //get color array
     const colorArr: string[] = getValues("color").map((color) => color);
-
+    // get all tags
     const tagsValues = getValues(["technique", "availability", "shape"]);
     const tags = [...tagsValues, ...colorArr];
 
     const newData = {
       ...data,
+      order,
       tags,
       img,
     };
