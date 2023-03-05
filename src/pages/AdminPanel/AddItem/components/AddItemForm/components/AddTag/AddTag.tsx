@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
-import { Button, useToast } from "@chakra-ui/react";
+import { Button, useToast, Flex } from "@chakra-ui/react";
 import { categoryRef, translateRef } from "api";
 import { CustomModal, InputForm } from "components";
 import { arrayUnion, setDoc, updateDoc } from "firebase/firestore";
@@ -22,18 +22,21 @@ export const AddTag = ({ onClose, isOpen, category }: AddTagProps) => {
 
   const submit: SubmitHandler<FieldValues> = (data, event?) => {
     event?.preventDefault();
-
     updateDoc(categoryRef, {
-      shape: arrayUnion(data.shape),
+      [category]: arrayUnion(
+        category === "color"
+          ? { name: data.category, color: data.categoryColor }
+          : data.category
+      ),
     });
     setDoc(
       translateRef,
       {
         EN: {
-          [data.shape]: data.shape,
+          [data.category]: data.category,
         },
         PL: {
-          [data.shape]: data.PL,
+          [data.category]: data.PL,
         },
       },
       { merge: true }
@@ -68,25 +71,37 @@ export const AddTag = ({ onClose, isOpen, category }: AddTagProps) => {
       onClose={onClose}
       isOpen={isOpen}
     >
-      <InputForm
-        inputLabel={"Podaj nowy tag w języku angielskim:"}
-        inputPlaceholder={"tag"}
-        isInvalid={!!errors.category}
-        required
-        {...register(category, { required: true })}
-      />
+      <Flex flexDirection={"column"} gap={8}>
+        <InputForm
+          inputLabel={"Podaj nowy tag w języku ANGIELSKIM:"}
+          inputPlaceholder={"tag"}
+          isInvalid={!!errors.category}
+          helperText={"z małej litery"}
+          required
+          {...register("category", { required: true })}
+        />
+        <InputForm
+          inputLabel={"Dodaj POLSKIE tłumaczenie:"}
+          inputPlaceholder={"właściwość"}
+          isInvalid={!!errors.PL}
+          helperText={"z małej litery"}
+          required
+          {...register("PL", { required: true })}
+        />
+        {category === "color" && (
+          <InputForm
+            inputLabel={"Wybierz kolor"}
+            isInvalid={!!errors.categoryColor}
+            inputType={"color"}
+            required
+            {...register("categoryColor", { required: true })}
+          />
+        )}
 
-      <InputForm
-        inputLabel={"Dodaj polskie tłumaczenie:"}
-        inputPlaceholder={"tag"}
-        isInvalid={!!errors.category}
-        required
-        {...register("PL", { required: true })}
-      />
-
-      <Button onClick={handleSubmit(submit)} type="submit">
-        Dodaj
-      </Button>
+        <Button onClick={handleSubmit(submit)} type="submit">
+          Dodaj
+        </Button>
+      </Flex>
     </CustomModal>
   );
 };

@@ -10,9 +10,7 @@ export const singleArtCollection = (docId) => doc(db, collectionGallery, docId);
 
 export const collectionTranslations = "/translate";
 export const translationCollection = collection(db, collectionTranslations);
-// export const translateRef = doc(db, "translate", "aU1UHbflHpRNcqhiEwJm");
-export const translateRef = doc(db, "trans", "I7brRCjfonD5VeJ6r75i");
-
+export const translateRef = doc(db, "translate", "aU1UHbflHpRNcqhiEwJm");
 
 export const collectionCategory = "/category";
 export const categoryCollection = collection(db, collectionCategory);

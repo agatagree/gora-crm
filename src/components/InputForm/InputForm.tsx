@@ -1,4 +1,7 @@
-import { forwardRef, useState } from "react";
+import {
+  forwardRef,
+  useState,
+} from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   FormControl,
@@ -14,14 +17,13 @@ import {
 
 type FormInputProps = {
   inputValue?: string;
-  inputPlaceholder: string;
+  inputPlaceholder?: string;
   inputLabel?: string;
   required?: boolean;
   password?: boolean;
   isInvalid?: boolean;
   helperText?: string;
-  // onChange?: () => void | undefined;
-  inputType?: "text" | "password" | "number" | "file";
+  inputType?: "text" | "password" | "number" | "file" | "color";
   cm?: boolean;
 };
 
@@ -36,7 +38,6 @@ export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
       isInvalid,
       helperText,
       inputType,
-      // onChange,
       cm,
       ...props
     },
@@ -64,7 +65,6 @@ export const InputForm = forwardRef<HTMLInputElement, FormInputProps>(
             ref={ref}
             type={inputType}
             aria-invalid={isInvalid ? "true" : "false"}
-            // onChange={onChange}
           />
           {password && (
             <InputRightElement width="4.5rem">

@@ -32,13 +32,11 @@ export const CustomModal = ({
     >
       <ModalOverlay data-testid="modal-overlay" />
       <ModalContent>
-        <ModalHeader>{title}</ModalHeader>
+        <ModalHeader mb={12}>{title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>
-            Zamknij
-          </Button>
+        <ModalFooter mt={12}>
+          <Button onClick={onClose}>Zamknij</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
