@@ -41,7 +41,7 @@ export const ImageUpload = memo(
           [type]: imgUrl,
         });
       }
-    }, [imgUrl]);
+    }, [imgUrl, img, setImg, type]);
 
     useEffect(() => {
       if (imgUpload) {
@@ -72,7 +72,7 @@ export const ImageUpload = memo(
             });
           });
       }
-    }, [imgUpload]);
+    }, [imgUpload, title, toast, type]);
 
     return (
       <>
