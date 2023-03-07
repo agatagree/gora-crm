@@ -10,33 +10,33 @@ import {
   Button,
 } from "@chakra-ui/react";
 
+type CustomModalProps = {
+  onClose: () => void;
+  isOpen: boolean;
+  title: string;
+  children: ReactNode;
+};
+
 export const CustomModal = ({
   onClose,
   isOpen,
   title,
   children,
-  submitBtnLabel,
-}: {
-  onClose: () => void;
-  isOpen: boolean;
-  title: string;
-  children: ReactNode;
-  submitBtnLabel: string;
-}) => {
+}: CustomModalProps) => {
   return (
     <Modal
       onClose={onClose}
       isOpen={isOpen}
-      scrollBehavior={"inside"} //AG: czy powinnam to testować? czy to nie ui?
+      scrollBehavior={"inside"}
       closeOnOverlayClick={false}
     >
       <ModalOverlay data-testid="modal-overlay" />
       <ModalContent>
-        <ModalHeader>{title}</ModalHeader>
+        <ModalHeader mb={12}>{title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>{submitBtnLabel}</Button>
+        <ModalFooter mt={12}>
+          <Button onClick={onClose}>Zamknij</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

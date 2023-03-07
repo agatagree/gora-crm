@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Flex, useDisclosure } from "@chakra-ui/react";
 import { galleryCollection, getDataFromSnapshot } from "api";
 import { DataTable, DashboardNav, Filtration } from "./components";
-import { AlertMessage, Loader } from "components";
+import { AdminRoutingLayout, AlertMessage, Loader } from "components";
 import { onSnapshot } from "firebase/firestore";
 import { GalleryType } from "types/Types";
 
@@ -18,12 +18,12 @@ export const Dashboard = () => {
     });
   }, [load]);
 
+
   if (load) {
     return <Loader />;
   }
   return (
-    <>
-    <Flex p={10}>
+    <AdminRoutingLayout>
       {data.length > 0 ? (
         <Flex flexDirection={"column"}>
           <DashboardNav onOpen={onOpen} />
@@ -33,7 +33,6 @@ export const Dashboard = () => {
       ) : (
         <AlertMessage message={404} />
       )}
-      </Flex>
-    </>
+    </AdminRoutingLayout>
   );
 };

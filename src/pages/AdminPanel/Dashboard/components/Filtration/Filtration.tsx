@@ -10,7 +10,6 @@ export const Filtration = ({
   return (
     <CustomModal
       title={"Filtracja"}
-      submitBtnLabel={"Pokaż elementy"}
       onClose={onClose}
       isOpen={isOpen}
     >
